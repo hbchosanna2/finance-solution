@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage('Dockerize') {
+            steps {
+                sh 'docker build -t <your-docker-registry>/htech-finance-app:latest .'
+                sh 'docker push <your-docker-registry>/htech-finance-app:latest'
+            }
+        }
+    }
+}

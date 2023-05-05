@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: htech-finance-app
+  labels:
+    app: htech-finance-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: htech-finance-app
+  template:
+    metadata:
+      labels:
+        app: htech-finance-app
+    spec:
+      containers:
+        - name: htech-finance-app
+          image: <your-docker-registry>/htech-finance-app:latest
+          ports:
+            - containerPort: 8080
