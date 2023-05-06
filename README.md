@@ -50,7 +50,7 @@ The following files are included in the HTech Finance Solution:
 
 Github
 The HTech Finance Solution is hosted on Github. To clone the repository, run the following command:
-git clone https://github.com/htech/finance-solution.git
+git clone https://github.com/achuchekwi/finance-solution.git
 
 This will create a local copy of the repository on your machine.
 
