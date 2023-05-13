@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Build and Test
           command: |
-            javac financeapp.java
+            javac HTechFinanceApp.java
             java HTechFinanceApp
 
   deploy:
