@@ -1,0 +1,36 @@
+version: 2.1
+executors:
+  default:
+    docker:
+      - image: circleci/openjdk:11-jdk
+
+jobs:
+  build:
+    executor: default
+    steps:
+      - checkout
+      
+      - run:
+          name: Build and Test
+          command: |
+            javac HTechFinanceApp.java
+            java HTechFinanceApp
+
+  deploy:
+    executor: default
+    steps:
+      - setup_remote_docker:
+          version: 20.10.5
+          docker_layer_caching: true
+
+      - run:
+          name: Package and Dockerize
+          command: |
+            docker build -t htechfinanceapp .
+            docker tag htechfinanceapp:latest your-dockerhub-username/htechfinanceapp:latest
+
+      - run:
+          name: Push to Docker Hub
+          command: |
+            docker login -u hbchosanna -p 1$Blessed
+            docker push hbchosanna/htechfinanceapp:latest
