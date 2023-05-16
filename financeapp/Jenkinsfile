@@ -6,6 +6,13 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
         stage('Dockerize') {
             steps {
                 sh 'docker build -t <your-docker-registry>/htech-finance-app:latest .'
