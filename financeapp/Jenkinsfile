@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Download Source Code') {
+            steps {
+                git 'https://github.com/hbchosanna2/finance-solution.git'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn clean package'
