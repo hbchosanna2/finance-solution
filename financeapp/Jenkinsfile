@@ -20,8 +20,8 @@ pipeline {
         }
         stage('Dockerize') {
             steps {
-                sh 'docker build -t <your-docker-registry>/htech-finance-app:latest .'
-                sh 'docker push <your-docker-registry>/htech-finance-app:latest'
+                sh 'docker build -t achuchekwi/htech-finance-app:latest .'
+                sh 'docker push achuchekwi/htech-finance-app:latest'
             }
         }
     }
